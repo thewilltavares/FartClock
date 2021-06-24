@@ -26,14 +26,6 @@ Client.on('ready', async () => {
 const task = cron.schedule('* * * * *', async () => {
 	let { hour, amPm, timezoneOffsetString } = getTimeInfo();
 	console.log(`The time is now ${hour}:00 ${amPm} GMT${timezoneOffsetString}`);
-	// if text channel was defined send message in chat
-	if (textChannel) {
-		const messageEmbed = new Discord.MessageEmbed()
-		.setColor('#FFD700')
-		.setTitle(`The time is now ${hour}:00 ${amPm} GMT${timezoneOffsetString}`)
-		
-		textChannel.send(messageEmbed);
-	}
 
 	// check if VC defined in config is empty
 	if (voiceChannel.members.size >= 1) {
@@ -65,12 +57,11 @@ const task = cron.schedule('* * * * *', async () => {
 // function to get current time and return object containing
 // hour and if it is am or pm
 const getTimeInfo = () => {
-		let time = new Date();
+		let time = new Date(dt.getTime() + -300*60*1000);
 		let hour = time.getHours() >= 12 ? time.getHours() - 12 : time.getHours();
 		hour = hour === 0 ? 12 : hour;
 		let amPm = time.getHours() >= 12 ? 'PM' : 'AM';
-
-		let timezoneOffsetString = `- 4`;
+		let timezoneOffsetString = `-4`;
 
 	return {
 		hour,
