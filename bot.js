@@ -65,14 +65,12 @@ const task = cron.schedule('* * * * *', async () => {
 // function to get current time and return object containing
 // hour and if it is am or pm
 const getTimeInfo = () => {
-		//GMT Offset
-		var offset = -4;
-		let time = new Date( new Date().getTime() + offset * 3600 * 1000).toUTCString().replace( / GMT$/, "" )
+		let time = new Date();
 		let hour = time.getHours() >= 12 ? time.getHours() - 12 : time.getHours();
 		hour = hour === 0 ? 12 : hour;
 		let amPm = time.getHours() >= 12 ? 'PM' : 'AM';
 
-		let timezoneOffsetString = `${offset}`;
+		let timezoneOffsetString = `- 4`;
 
 	return {
 		hour,
