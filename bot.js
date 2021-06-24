@@ -23,9 +23,9 @@ Client.on('ready', async () => {
 });
 
 // use node-cron to create a job to run every hour
-const task = cron.schedule('* * * * *', async () => {
-	let { hour, amPm, timezoneOffsetString } = getTimeInfo();
-	console.log(`The time is now ${hour}:00 ${amPm} GMT${timezoneOffsetString}`);
+const task = cron.schedule('0 0 */1 * * *', async () => {
+	let { hour, amPm} = getTimeInfo();
+	console.log(`The time is now ${hour}:00 ${amPm}`);
 
 	// check if VC defined in config is empty
 	if (voiceChannel.members.size >= 1) {
@@ -35,18 +35,19 @@ const task = cron.schedule('* * * * *', async () => {
 			// counter for looping
 			let count = 1;
 		
-			// immediately invoked function that loops to play the bell sound 
-			(function play() {
-				connection.play('bigben.mp3')
-				.on('finish', () => {
-					count += 1;
-					if (count <= hour) {
-						play();
-					} else {
-						connection.disconnect();
-					}
-				})
-			})();
+			setTimeout(function(){
+				(function play() {
+					connection.play('bigben.mp3')
+					.on('finish', () => {
+						count += 1;
+						if (count <= hour) {
+							play();
+						} else {
+							connection.disconnect();
+						}
+					})
+				})();
+			}, 3000);
 
 		} catch(error) {
 			console.log(error);
@@ -59,16 +60,13 @@ const task = cron.schedule('* * * * *', async () => {
 const getTimeInfo = () => {
 		var d = new Date();
 		let time = new Date(d.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-		console.log(time);
 		let hour = time.getHours() >= 12 ? time.getHours() - 12 : time.getHours();
 		hour = hour === 0 ? 12 : hour;
 		let amPm = time.getHours() >= 12 ? 'PM' : 'AM';
-		let timezoneOffsetString = `-4`;
 
 	return {
 		hour,
-		amPm,
-		timezoneOffsetString
+		amPm
 	}
 }
 
