@@ -23,7 +23,7 @@ Client.on('ready', async () => {
 });
 
 // use node-cron to create a job to run every hour
-const task = cron.schedule('0 0 */1 * * *', async () => {
+const task = cron.schedule('* * * * *', async () => {
 	let { hour, amPm} = getTimeInfo();
 	console.log(`The time is now ${hour}:00 ${amPm}`);
 
