@@ -57,7 +57,9 @@ const task = cron.schedule('* * * * *', async () => {
 // function to get current time and return object containing
 // hour and if it is am or pm
 const getTimeInfo = () => {
-		let time = new Date(dt.getTime() + -300*60*1000);
+		var d = new Date();
+		let time = new Date(d.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+		console.log(time);
 		let hour = time.getHours() >= 12 ? time.getHours() - 12 : time.getHours();
 		hour = hour === 0 ? 12 : hour;
 		let amPm = time.getHours() >= 12 ? 'PM' : 'AM';
