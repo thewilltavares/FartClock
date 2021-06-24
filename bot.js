@@ -69,11 +69,8 @@ const getTimeInfo = () => {
 		let hour = time.getHours() >= 12 ? time.getHours() - 12 : time.getHours();
 		hour = hour === 0 ? 12 : hour;
 		let amPm = time.getHours() >= 12 ? 'PM' : 'AM';
-		// get gmt offset in minutes and convert to hours
-		let gmtOffset = (time.getTimezoneOffset() / 60) - 4
-		console.log(gmtOffset);
-		// turn gmt offset into a string representing the timezone in its + or - gmt offset
-		let timezoneOffsetString = `${gmtOffset > 0 ? '-':'+'} ${Math.abs(gmtOffset)}`;
+
+		let timezoneOffsetString = `- 4`;
 
 	return {
 		hour,
