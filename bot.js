@@ -36,11 +36,17 @@ const task = cron.schedule('0 0 */1 * * *', async () => {
 			let count = 1;
 		
 			setTimeout(function(){
+				var bigBen = true;
+				var file = "bigben.mp3";
+				if(Math.random() < 0.25){
+					file = `${hour}${amPm.toLowerCase()}.mp3`;
+					bigBen = false;
+				}
 				(function play() {
-					connection.play('bigben.mp3')
+					connection.play(file)
 					.on('finish', () => {
 						count += 1;
-						if (count <= hour) {
+						if (count <= hour && bigBen) {
 							play();
 						} else {
 							connection.disconnect();
