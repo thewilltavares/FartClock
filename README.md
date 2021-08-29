@@ -1,7 +1,7 @@
 # **Fart Bot**
 
 # **About**
-This is a meme edit of chisstoll1's Big Ben Bot: https://github.com/chrisstoll1/bigbenbot-squad
+This is a meme edit of chisstoll1's Big Ben Bot: https://github.com/chrisstoll1/bigbenbot-squad   
 Full credit to Chris!
 
 ### Things to note
