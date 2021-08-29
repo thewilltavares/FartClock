@@ -1,7 +1,8 @@
-# **Big Ben Bot** (as seen on tiktok @aaronr5)
+# **Fart Bot**
 
 # **About**
-Created this bot in about 45 minutes to make a funny tik tok. With that being said don't expect a feature rich bot, it is bare bones and minimal to get the job I needed done in order to make people laugh on tiktok. As of right now I'm not sure if I have plans to add any features/capabilities to this bot. Feel free to use it as is or fork it and make changes/add features. Enjoy!
+This is a meme edit of chisstoll1's Big Ben Bot: https://github.com/chrisstoll1/bigbenbot-squad   
+Full credit to Chris!
 
 ### Things to note
 - This bot is only setup currently to run in one server and that is whatever server you define. You could extend it to work in multiple guilds if you wanted.
